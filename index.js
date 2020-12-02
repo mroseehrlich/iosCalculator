@@ -18,7 +18,7 @@ const handleOperator = (value) => {
       if (buffer.length === 1) {
         buffer = '0';
       } else {
-        buffer = buffer.substring(0, buffer.length - 1);
+        buffer = buffer.slice(0, buffer.length - 1);
       }
       break;
 
@@ -41,7 +41,7 @@ const handleOperator = (value) => {
     case '=':
       flushOperation(parseInt(buffer));
       previousOperator = null;
-      buffer = runningTotal;
+      buffer = '' + runningTotal;
       runningTotal = 0;
       break;
   }
@@ -96,9 +96,9 @@ const handleClick = (event) => {
 };
 
 const init = () => {
-  document.querySelector('.calc-btns').addEventListener('click', handleClick);
-  displayResult(buffer);
-  console.log(buffer);
+  document
+    .querySelector('.calc-buttons')
+    .addEventListener('click', handleClick);
 };
 
 init();
